@@ -11,6 +11,12 @@ var reconnect = inject(function () {
 })
 
 reconnect(function (stream) {
+    console.log("opening")
+
+    stream.once("connect", function () {
+        console.log("connected")
+    })
+
     stream.once("closed", function () {
         console.log("closed", arguments)
     })

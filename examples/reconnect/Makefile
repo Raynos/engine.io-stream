@@ -10,7 +10,7 @@ watch:
 	./node_modules/.bin/wr "make build" .
 
 live-reload:
-	./node_modules/.bin/live-reload
+	./node_modules/.bin/live-reload --port=9025
 
 open:
 	google-chrome localhost:8080

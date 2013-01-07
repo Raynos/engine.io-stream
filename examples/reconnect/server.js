@@ -28,8 +28,9 @@ function onConnection(stream) {
     }, 1251)
 
     stream.once("end", function () {
+        stream.unpipe(process.stdout)
         clearInterval(iv)
     })
 
-    stream.pipe(process.stdout, { end : false })
+    stream.pipe(process.stdout)
 }
