@@ -1,6 +1,5 @@
 var ReadWriteStream = require("read-write-stream")
     , WriteStream = require("write-stream")
-    , reemit = require("re-emitter/reemit")
 
 module.exports = EngineStream
 
@@ -8,7 +7,7 @@ function EngineStream(socket) {
     var queue = ReadWriteStream(write, end)
         , stream = queue.stream
 
-    reemit(socket, stream, "error")
+    socket.on("error", stream.emit.bind(stream, "error"));
 
     socket.on("open", function () {
         stream.emit("connect")
@@ -22,8 +21,6 @@ function EngineStream(socket) {
     })
     socket.on("message", queue.push)
 
-    return stream
-
     function write(chunk) {
         socket.send(chunk)
     }
@@ -31,6 +28,8 @@ function EngineStream(socket) {
     function end() {
         socket.close()
     }
+
+    return stream
 }
 
 function noop() {}

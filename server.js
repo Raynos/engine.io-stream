@@ -1,7 +1,5 @@
 var EngineIO = require("engine.io")
     , EventEmitter = require("events").EventEmitter
-    , reemit = require("re-emitter/reemit")
-
     , EngineStream = require("./stream")
 
 module.exports = EngineServer
@@ -34,7 +32,7 @@ function EngineServer(onConnection) {
 
         servers.push(server)
 
-        reemit(server, engine, "error")
+        server.on("error", engine.emit.bind(engine, "error"));
 
         server.on("connection", function (socket) {
             engine.emit("connection", EngineStream(socket))

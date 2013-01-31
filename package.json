@@ -19,7 +19,6 @@
   "dependencies": {
     "engine.io": "~0.3.10",
     "engine.io-client": "git://github.com/Raynos/engine.io-client#browserify",
-    "re-emitter": "~0.3.0",
     "read-write-stream": "~0.1.6",
     "write-stream": "~0.4.3"
   },
