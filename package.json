@@ -12,6 +12,7 @@
       "name": "Jake Verbaten"
     }
   ],
+  "browser": "./client.js",
   "bugs": {
     "url": "https://github.com/Raynos/engine.io-stream/issues",
     "email": "raynos2@gmail.com"
