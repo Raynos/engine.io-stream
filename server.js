@@ -22,8 +22,6 @@ function EngineServer(onConnection) {
             options = { path: options }
         }
 
-        options.destroyUpgrade = false;
-
         var server = EngineIO.attach(httpServer, options)
 
         servers.push(server)
