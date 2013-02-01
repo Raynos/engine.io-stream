@@ -5,23 +5,21 @@
   "keywords": [],
   "author": "Raynos <raynos2@gmail.com>",
   "repository": "git://github.com/Raynos/engine.io-stream.git",
-  "main": "index",
   "homepage": "https://github.com/Raynos/engine.io-stream",
   "contributors": [
     {
       "name": "Jake Verbaten"
     }
   ],
+  "main": "./server",
   "browser": "./client.js",
   "bugs": {
     "url": "https://github.com/Raynos/engine.io-stream/issues",
     "email": "raynos2@gmail.com"
   },
   "dependencies": {
-    "engine.io": "~0.3.10",
-    "engine.io-client": "git://github.com/Raynos/engine.io-client#browserify",
-    "read-write-stream": "~0.1.6",
-    "write-stream": "~0.4.3"
+    "engine.io": "0.4.1",
+    "engine.io-client": "git://github.com/shtylman/engine.io-client.git#v0.4.1-dz1"
   },
   "devDependencies": {
     "tap": "~0.3.1"

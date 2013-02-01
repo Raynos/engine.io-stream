@@ -1,6 +1,6 @@
 var EngineIO = require("engine.io")
     , EventEmitter = require("events").EventEmitter
-    , EngineStream = require("./stream")
+    , EngineStream = require("./eiostream")
 
 module.exports = EngineServer
 
@@ -15,18 +15,14 @@ function EngineServer(onConnection) {
         engine.on("connection", onConnection)
     }
 
-    return engine
-
     function attach(httpServer, options) {
         options = options || {}
 
         if (typeof options === "string") {
-            options = { resource: options }
+            options = { path: options }
         }
 
-        if (options.resource[0] === "/") {
-            options.resource = options.resource.substr(1)
-        }
+        options.destroyUpgrade = false;
 
         var server = EngineIO.attach(httpServer, options)
 
@@ -42,6 +38,8 @@ function EngineServer(onConnection) {
     function close() {
         servers.forEach(invoke("close"))
     }
+
+    return engine
 }
 
 function invoke(method) {
