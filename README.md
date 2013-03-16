@@ -1,48 +1,34 @@
 # engine.io-stream
 
-Make engine.io a valid node stream
+simple interface to engine.io via node streams
 
-The API is pretty much the same as [shoe][1]
+The API is pretty much the same as [shoe](https://github.com/substack/shoe)
 
 ## Example Client
 
 ```js
-var mapping = require("mapping-stream")
-    , append = require("insert/append")
+var engine = require("engine.io-stream")
 
-    , engine = require("engine.io-stream")
+// attach to an engine.io server at url '/invert'
+var stream = engine("/numbers")
 
-    , body = document.body
-    , stream = engine("/invert")
-
-stream
-    .pipe(mapping(function (chunk) {
-        append(body, String(chunk))
-        return String(Number(chunk) ^ 1)
-    }))
-    .pipe(stream)
+stream.on('data', function(data) {
+    console.log(data)
+    stream.write('ack')
+})
 ```
 
 ## Example Server
 
 ```js
 var http = require("http")
-    , path = require("path")
-    , ecstatic = require("ecstatic")
+var EngineServer = require("engine.io-stream")
 
-    , EngineServer = require("engine.io-stream/server")
+// engines need to attach to server instances (see below)
+var server = http.createServer(...)
 
-    , staticHandler = ecstatic(path.join(__dirname, "static"))
-    , server = http.createServer(staticHandler)
-    , engine = EngineServer(onConnection)
-
-engine.attach(server, "/invert")
-
-server.listen(8080)
-
-console.log("Listening on port 8080")
-
-function onConnection(stream) {
+var engine = EngineServer(function(stream) {
+    // send back some numbers, you know...for fun
     var iv = setInterval(function () {
         stream.write(String(Math.floor(Math.random() * 2)))
     }, 250)
@@ -52,7 +38,14 @@ function onConnection(stream) {
     })
 
     stream.pipe(process.stdout, { end : false })
-}
+})
+
+// expose the engine instance at this url
+engine.attach(server, "/numbers")
+
+server.listen(8080, function() {
+    console.log("Listening on port 8080")
+})
 ```
 
 ## Installation
@@ -63,6 +56,6 @@ function onConnection(stream) {
 
  - Raynos
 
-## MIT Licenced
+## Licence
+MIT
 
-  [1]: https://github.com/substack/shoe
