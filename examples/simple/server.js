@@ -1,20 +1,26 @@
 var http = require("http")
-    , path = require("path")
-    , ecstatic = require("ecstatic")
+var path = require("path")
 
-    , EngineServer = require("../../server")
+var enchilada = require("enchilada");
 
-    , staticHandler = ecstatic(path.join(__dirname, "static"))
-    , server = http.createServer(staticHandler)
-    , engine = EngineServer(onConnection)
+var ecstatic = require("ecstatic")
+var EngineServer = require("../../")
 
-engine.attach(server, "/invert")
+var staticHandler = ecstatic(path.join(__dirname, "static"))
+var bundler = enchilada(__dirname + '/static');
 
-server.listen(8080)
+var server = http.createServer(function(req, res) {
+    req.path = req.url;
+    res.contentType = res.setHeader.bind(res, 'content-type');
+    res.send = res.end;
 
-console.log("Listening on port 8080")
+    bundler(req, res, function(err) {
+        if (err) { return res.end(err.stack) };
+        staticHandler(req, res);
+    });
+})
 
-function onConnection(stream) {
+var engine = EngineServer(function(stream) {
     var iv = setInterval(function () {
         stream.write(String(Math.floor(Math.random() * 2)))
     }, 250)
@@ -24,4 +30,11 @@ function onConnection(stream) {
     })
 
     stream.pipe(process.stdout, { end : false })
-}
+})
+
+engine.attach(server, "/invert")
+
+server.listen(8080, function() {
+    console.log("Listening on port 8080")
+})
+
