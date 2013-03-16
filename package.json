@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "engine.io": "0.4.3",
-    "engine.io-client": "shtylman/engine.io-client#v0.4.3-dz0"
+    "engine.io-client": "shtylman/engine.io-client#v0.4.3-dz1"
   },
   "devDependencies": {
     "tap": "~0.3.1"
