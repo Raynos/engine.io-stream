@@ -1,6 +1,6 @@
 var EngineSocket = require("engine.io-client").Socket
 
-    , EngineStream = require("./eiostream")
+var EngineStream = require("./eiostream")
 
 module.exports = EngineClient
 

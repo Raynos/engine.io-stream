@@ -1,12 +1,13 @@
 var EngineIO = require("engine.io")
-    , EventEmitter = require("events").EventEmitter
-    , EngineStream = require("./eiostream")
+var EventEmitter = require("events").EventEmitter
+
+var EngineStream = require("./eiostream")
 
 module.exports = EngineServer
 
 function EngineServer(onConnection) {
     var engine = new EventEmitter
-        , servers = []
+    var servers = []
 
     engine.attach = attach
     engine.close = close
