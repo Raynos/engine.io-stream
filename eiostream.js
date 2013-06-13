@@ -2,6 +2,7 @@ var Stream = require('stream').Stream;
 
 function EngineStream(socket) {
     var stream = new Stream();
+    stream.readable = stream.writable = true;
 
     socket.on("error", stream.emit.bind(stream, "error"))
     socket.on("open", stream.emit.bind(stream, "connect"))
