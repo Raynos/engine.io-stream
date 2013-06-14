@@ -9,7 +9,7 @@ The API is pretty much the same as [shoe](https://github.com/substack/shoe)
 ```js
 var engine = require("engine.io-stream")
 
-// attach to an engine.io server at url '/invert'
+// attach to an engine.io server at url '/numbers'
 var stream = engine("/numbers")
 
 stream.on('data', function(data) {
