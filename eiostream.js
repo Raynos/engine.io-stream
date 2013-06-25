@@ -14,8 +14,7 @@ function EngineStream(socket) {
     // forwarding write
     stream.write = socket.write.bind(socket)
 
-    // circular of request so it can be parsed for cookies, etc.
-    stream.req = socket.transport.request
+    stream.transport = socket.transport
 
     return stream
 }
