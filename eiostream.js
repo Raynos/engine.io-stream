@@ -13,6 +13,9 @@ function EngineStream(socket) {
 
     // forwarding write
     stream.write = socket.write.bind(socket)
+    
+    // forward end
+    stream.end = socket.close.bind(socket)
 
     stream.transport = socket.transport
 
