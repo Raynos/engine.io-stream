@@ -43,6 +43,6 @@ function EngineServer(onConnection) {
 
 function invoke(method) {
     return function (obj) {
-        return obj[method].call(obj)
+        return (obj[method])()
     }
 }
