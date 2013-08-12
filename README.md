@@ -55,6 +55,8 @@ server.listen(8080, function() {
 ## Contributors
 
  - Raynos
+ - shtylman
+ - juliangruber
 
 ## Licence
 MIT
