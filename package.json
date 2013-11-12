@@ -18,8 +18,8 @@
     "email": "raynos2@gmail.com"
   },
   "dependencies": {
-    "engine.io": "0.6.3",
-    "engine.io-client": "shtylman/engine.io-client#0.6.3-dz"
+    "engine.io": "0.7.12",
+    "engine.io-client": "0.7.12"
   },
   "devDependencies": {
     "tap": "~0.3.1"
