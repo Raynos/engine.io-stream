@@ -32,6 +32,7 @@ function EngineServer(onConnection) {
         server.on("connection", function (socket) {
             engine.emit("connection", EngineStream(socket))
         })
+        return server
     }
 
     function close() {
