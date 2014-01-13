@@ -1,5 +1,9 @@
 # engine.io-stream
 
+[![build status][1]][2]
+[![NPM version][3]][4]
+[![Davis Dependency status][9]][10]
+
 simple interface to engine.io via node streams
 
 The API is pretty much the same as [shoe](https://github.com/substack/shoe)
@@ -59,6 +63,17 @@ server.listen(8080, function() {
  - juliangruber
  - hij1nx
 
-## Licence
-MIT
+## Licence MIT
 
+  [1]: https://secure.travis-ci.org/Raynos/engine.io-stream.png
+  [2]: https://travis-ci.org/Raynos/engine.io-stream
+  [3]: https://badge.fury.io/js/engine.io-stream.png
+  [4]: https://badge.fury.io/js/engine.io-stream
+  [5]: https://coveralls.io/repos/Raynos/engine.io-stream/badge.png
+  [6]: https://coveralls.io/r/Raynos/engine.io-stream
+  [7]: https://gemnasium.com/Raynos/engine.io-stream.png
+  [8]: https://gemnasium.com/Raynos/engine.io-stream
+  [9]: https://david-dm.org/Raynos/engine.io-stream.png
+  [10]: https://david-dm.org/Raynos/engine.io-stream
+  [11]: https://ci.testling.com/Raynos/engine.io-stream.png
+  [12]: https://ci.testling.com/Raynos/engine.io-stream
