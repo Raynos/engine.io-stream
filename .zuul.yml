@@ -1,2 +1,5 @@
 ui: mocha-qunit
 server: ./test/support/server.js
+browsers:
+  - name: chrome
+    version: latest
