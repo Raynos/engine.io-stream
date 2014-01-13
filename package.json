@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "after": "0.8.1",
-    "zuul": "~1.0.2"
+    "zuul": "~1.0.10"
   },
   "licenses": [
     {
