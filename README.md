@@ -57,6 +57,7 @@ server.listen(8080, function() {
  - Raynos
  - shtylman
  - juliangruber
+ - hij1nx
 
 ## Licence
 MIT
