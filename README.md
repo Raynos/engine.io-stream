@@ -11,7 +11,7 @@ The API is pretty much the same as [shoe](https://github.com/substack/shoe)
 ## Example Client
 
 ```js
-var engine = require("engine.io-stream")
+var engine = require("engine.io-stream/client")
 
 // attach to an engine.io server at url '/numbers'
 var stream = engine("/numbers")
